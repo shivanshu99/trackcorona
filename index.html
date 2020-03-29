@@ -1,0 +1,496 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <link rel="shortcut icon" href=".\img\title.png">
+
+     <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+  
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto|Roboto+Mono&display=swap" rel="stylesheet">
+    <title>COVID-19 TRACKER</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+
+
+
+
+   
+        <style type="text/css">
+        .highlighted
+        {
+            background-color: yellow;
+        }
+        .highlight
+        {
+            background-color: blue;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px; 
+            -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.7); 
+            -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.7); 
+            box-shadow: 0 1px 40px rgba(0, 0, 0, 0.7); 
+        }
+        .highlight
+        {
+            padding: 1px 4px;
+            margin: 0 -4px;
+        }
+    </style>
+  
+
+<style>
+img{
+  width: 40px;
+  height: 40px;
+}  
+body {
+background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+}
+
+.statistic{
+    width: 100%;
+}
+
+.total_case_box{
+    
+    background-image: linear-gradient(-225deg, #20E2D7 0%, #F9FEA5 100%);
+    box-shadow: 2px 2px 8px rgba(30,30,30,.2);
+   
+   
+    text-align: center;
+    text-transform: uppercase;
+}
+.total_case_box p{
+    font-size: 3rem;
+}
+ .box_wrapper{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+
+.box_wrapper .box{
+    background-image: linear-gradient(-225deg, #20E2D7 0%, #F9FEA5 100%);
+    box-shadow: 2px 2px 8px rgba(30,30,30,.2);
+    margin: 10px 15px;
+    width:25%;
+    text-align: center;
+    padding: 15px 0;
+    border-radius: 8px;
+    text-transform: uppercase;
+}
+.box_wrapper .box p{
+    font-size: 2.5rem;
+}
+@media only screen and (max-width: 800px) {
+  .box_wrapper .box {
+ background-image: linear-gradient(-225deg, #20E2D7 0%, #F9FEA5 100%);
+    box-shadow: 2px 2px 8px rgba(30,30,30,.2);
+    margin: 1px 2px;
+    width:25%;
+    text-align: center;
+    padding: 15px 0;
+    border-radius: 8px;
+    text-transform: uppercase;
+    
+  }
+  .box_wrapper .box p{
+    font-size: 1.5rem;
+}
+.container{
+  margin-top: 0px;
+  }
+h3{
+  font-size: 20px;
+}
+
+}
+.container{
+  margin-top: 150px;
+  padding-left: 0px;
+  padding-right: 0px;
+
+}
+.form-inline{
+  flex-flow: nowrap;
+  align-items: center;
+}
+
+table{
+    width: 100%;
+    padding: 15px 10px;
+    margin: 10px 0;
+    text-align: center;
+    border-spacing: 0;
+}
+tr:first-child{
+    background-color: black;
+    color: black;
+    text-transform: uppercase;
+
+}
+
+th{
+    padding: 15px 0;
+    border: none;
+    border-spacing: 0;
+    
+}
+tr:nth-child(even){
+    background-color: lightblue;
+    font-weight: 500
+    
+    
+}
+tr:nth-child(odd){
+    
+    color: #fafafa;
+    font-weight: 500;
+}
+tr td{
+    padding: 15px 0;
+    
+    
+}
+h1{
+  color: white;
+  align-items: center;
+  text-align: center;
+}
+.page-footer{
+  background-color: black;
+  color: white;
+  text-align: center;
+  text-align: justify; 
+
+}
+.row{
+  margin: 30px;
+  margin-bottom: 10px;
+}
+
+.loader {
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader > img {
+    width: 60px;
+}
+
+.loader.hidden {
+    animation: fadeOut 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.thumb {
+    height: 100px;
+    border: 1px solid black;
+    margin: 10px;
+}
+
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+</style>
+    
+</head>
+<body>
+<div class="loader">
+    <img src=".\img\loading.gif" title="Loading..." />  <p>Loading</p>
+</div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+     <div class="col-lg-5 col-md-5 col-sm-5">
+              <h1>COVID-19</h1>
+          </div>    
+    <div class="search_box col-lg-7 col-xl-5 col-md-7 col-sm-7 col-xs-4">
+          
+        <form action="" id="form2" class="form-inline search-wrap" >
+         
+          <div class="input-group w-100" > <input type="text" class="form-control search-form"placeholder="Search Country ..." required="true" aria-label="Search" name="search" id="search">
+          <div class="input-group-append"> <button class="btn btn-primary search-button" type="button" id="submit_form" 
+            onclick="checkInput()  " value="Submit"> <i class="fa fa-search"></i> </button> </div>
+          </div>
+        </form>
+</nav>
+ 
+          
+<div class="container">
+      
+<div class="statistic">
+            <div class="total_case_box">
+                <h2>Total Cases In World</h2>
+                <p id="total_cases"></p>
+            </div>
+           <div class="box_wrapper">
+                <div class="box">
+                    <h3>Total Death</h3>
+                    <p id="total_death"> </p>
+                </div>
+
+                <div class="box">
+                    <h3>Total Recovery</h3>
+                    <p id="total_recovered"> </p>
+                </div>
+
+                <div class="box">
+                    <h3>Today New case</h3>
+                    <p id="new_case"> </p>
+                </div>
+
+                <div class="box">
+                    <h3>Today Total Death</h3>
+                    <p id="new_death"> </p>
+                </div>
+           </div> 
+
+
+            
+               <table id="countries_stat">
+                   <tr id="myUL">
+                       <th>Country</th>
+                       <th>Cases</th>
+                       <th>Deaths</th>
+                       <th>serious critical</th>
+                       <th>total recovered</th>
+                   </tr>
+               </table>
+          
+         </div>
+       </div>
+
+
+
+
+<footer class="page-footer font-small mdb-color lighten-3 pt-4">
+
+ 
+    <div class="row">
+
+      <div class="col-md-4 col-lg-4 mr-auto my-md-4 my-0 mt-4 mb-1">
+
+        <h5 class="font-weight-bold text-uppercase mb-6">Coronavirus Disease</h5>
+        <p>A coronavirus is a kind of common virus that causes an infection in your nose, sinuses, or upper throat.They’re called coronaviruses because under a microscope, they look like a crown.</p>
+
+        <p>Most coronaviruses aren't dangerous. But in early 2020, after a December 2019 outbreak in China, the World Health Organization identified a new type of coronavirus. Officials named this new virus severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2). This is the virus that causes COVID-19.
+
+        .</p>
+        
+
+      </div>
+
+      <hr class="clearfix w-100 d-md-none">
+
+      <div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
+
+        <h5 class="font-weight-bold text-uppercase mb-4">About</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <p>
+              <a href="https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html">Symptoms</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="https://familydoctor.org/your-health-resources/health-tools/symptom-checker/!">Symptom Checker
+</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="#!">BLOG</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="#!">Contact Us</a>
+            </p>
+          </li>
+        </ul>
+
+      </div>
+
+      <hr class="clearfix w-100 d-md-none">
+
+      <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
+
+        <h5 class="font-weight-bold text-uppercase mb-4">Address</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <p>
+              <i class="fas fa-home mr-3"></i> Uttar Pradesh, Ballia 221712, IN</p>
+          </li>
+          <li>
+            <p>
+              <i class="fas fa-envelope mr-3"></i>tiwarishiv078@gmail.com</p>
+          </li>
+          <li>
+            <p>
+              <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+          </li>
+          <li>
+            <p>
+              <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+          </li>
+        </ul>
+
+      </div>
+  
+
+      <hr class="clearfix w-100 d-md-none">
+
+
+      <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
+
+        <h5 class="font-weight-bold text-uppercase mb-4">Follow Us</h5>
+
+        <a type="button" class="btn-floating btn-fb">
+          <img src="img/facebook.png">
+        </a>
+    
+        <a type="button" class="btn-floating btn-tw">
+          <img src="img/twiter.png">
+        </a>
+    
+        <a type="button" class="btn-floating btn-gplus">
+          <img src="img/gmail.png">
+        </a>
+     
+        <a type="button" class="btn-floating btn-dribbble">
+          <img src="img/instagram.png">
+        </a>
+
+      </div>
+   
+
+    </div>
+ 
+
+  </div>
+
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="#">By Shivanshu Tiwari</a>
+  </div>
+
+
+</footer>
+
+
+    <script >
+      let new_cases = document.getElementById("new_case");
+let new_death = document.getElementById("new_death");
+let total_death = document.getElementById("total_death");
+let total_recovered = document.getElementById("total_recovered");
+let total_cases = document.getElementById("total_cases");
+let table = document.getElementById('countries_stat')
+
+fetch("https://coronavirus-monitor.p.rapidapi.com/coronavirus/worldstat.php", {
+    "method": "GET",
+    "headers": {
+        "x-rapidapi-host": "coronavirus-monitor.p.rapidapi.com",
+        "x-rapidapi-key": "53009286a0mshdc8ec356f7aa205p1e0e80jsn5858f548ed53"
+    }
+})
+.then(response => response.json().then( data => {
+    console.log(data);
+    total_cases.innerHTML = data.total_cases;
+    new_cases.innerHTML = data.new_cases;
+    new_death.innerHTML = data.new_deaths;
+    total_death.innerHTML = data.total_deaths;
+    total_recovered.innerHTML = data.total_recovered;
+
+})).catch(err => {
+    console.log(err);
+});
+
+
+fetch("https://coronavirus-monitor.p.rapidapi.com/coronavirus/cases_by_country.php", {
+    "method": "GET",
+    "headers": {
+        "x-rapidapi-host": "coronavirus-monitor.p.rapidapi.com",
+        "x-rapidapi-key": "53009286a0mshdc8ec356f7aa205p1e0e80jsn5858f548ed53"
+    }
+})
+.then(response => response.json().then(data =>{
+    console.log(data)
+    let countries_stat = data.countries_stat;
+
+    for(let i = 0; i<countries_stat.length;i++){
+        console.log(countries_stat[i]);
+     
+        let row = table.insertRow(i+1);
+        let country_name = row.insertCell(0);
+        let cases = row.insertCell(1);
+        let deaths = row.insertCell(2);
+        let serious_critical = row.insertCell(3);
+        let recovered_per_country = row.insertCell(4);
+        country_name.innerHTML = countries_stat[i].country_name;
+        cases.innerHTML = countries_stat[i].cases;
+        deaths.innerHTML = countries_stat[i].deaths;
+        serious_critical.innerHTML = countries_stat[i].serious_critical;
+        recovered_per_country.innerHTML = countries_stat[i].total_recovered;
+
+    }
+}))
+.catch(err => {
+    console.log(err);
+});
+   
+   
+    function checkInput() {
+        var query = document.getElementById('search').value;
+        window.find(query);
+        return true;
+    }
+
+
+
+
+
+
+
+
+
+
+  window.addEventListener("load", function () {
+    const loader = document.querySelector(".loader");
+    loader.className += " hidden"; // class "loader hidden"
+});
+
+
+</script>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+
